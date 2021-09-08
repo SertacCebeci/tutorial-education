@@ -59,6 +59,7 @@
         Next
       </button>
     </div>
+    <div v-if="selected < 0">You should select an option</div>
   </div>
 </template>
 

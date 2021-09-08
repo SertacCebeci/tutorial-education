@@ -37,19 +37,19 @@ export default {
       current: 0,
       cards: [
         {
-          question: 'Who is the current president?',
-          options: ['John Doe', 'Joe'],
+          question: 'Who is the current USA president?',
+          options: ['John Doe', 'Joe Biden'],
         },
         {
-          question: 'Fark eder mi?',
-          options: ['Evet', 'Hayır'],
+          question: 'When was the covid pandemic?',
+          options: ['2010', '2019'],
         },
         {
-          question: 'Who is the current president?',
-          options: ['John Doe', 'Joe'],
+          question: 'Who is the current France president?',
+          options: ['John Doe', 'Macron'],
         },
       ],
-      answers: ['Joe', 'Hayır', 'Joe'],
+      answers: ['Joe', '2019', 'Macron'],
     }
   },
   methods: {

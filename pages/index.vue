@@ -24,7 +24,7 @@ export default {
   },
   head() {
     return {
-      title: 'Welcome to Dad Jokes',
+      title: 'Welcome to Free Education',
       meta: [
         {
           hid: 'description',
