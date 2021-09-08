@@ -59,7 +59,10 @@
         Next
       </button>
     </div>
-    <div v-if="selected < 0">You should select an option</div>
+    <div v-if="selected < 0" class="flex justify-center text-red-600 italic">
+      ***You should select an option***
+    </div>
+    <div v-if="selected >= 0">Result: {{ this.scorePercent }}%</div>
   </div>
 </template>
 
@@ -69,6 +72,8 @@ export default {
   data() {
     return {
       selected: -1,
+      scoreCount: 0,
+      scorePercent: 100,
     }
   },
   props: {
@@ -80,11 +85,19 @@ export default {
       type: Array,
       default: [],
     },
+    answers: {
+      type: Number,
+      default: 0,
+    },
   },
   methods: {
     handleNextButton() {
       if (this.selected >= 0) {
         this.$emit('nextClicked')
+        if (this.selected == this.answers) {
+          this.scoreCount = this.scoreCount + 1
+          this.scorePercent = (this.scorePercent * this.scoreCount) / 3
+        }
         this.selected = -1
       }
     },
@@ -95,6 +108,7 @@ export default {
       this.selected = index
       console.log(this.selected)
     },
+    checkAnswers() {},
   },
 }
 </script>

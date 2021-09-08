@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'dadJokes',
+    title: 'Education',
     htmlAttrs: {
       lang: 'en'
     },
@@ -14,6 +14,18 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+   image: {
+    presets: {
+      cover: {
+        modifiers: {
+          fit: "cover",
+          format: "jpg",
+          width: 300,
+          height: 300,
+        },
+      },
+    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

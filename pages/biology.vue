@@ -1,56 +1,86 @@
 <template>
-  <div>
-    <div class="flex justify-center p-10">
-      <div>
-        <div class="px-20 py-12 space-y-4 bg-gray-100 shadow-xl">
-          <div>
-            What is the power center of the unit cell?
-            <div class="mt-2">
-              <label class="inline-flex items-center">
-                <input
-                  type="radio"
-                  class="form-radio"
-                  name="accountType"
-                  value="personal"
-                />
-                <span class="ml-2">Locoplast</span>
-              </label>
-              <label class="inline-flex items-center ml-6">
-                <input
-                  type="radio"
-                  class="form-radio"
-                  name="accountType"
-                  value="busines"
-                />
-                <span class="ml-2">Mithocondria</span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="justify-center flex items-center">
-      <button
-        class="
-          bg-blue-500
-          hover:bg-blue-700
-          text-white
-          font-bold
-          py-2
-          px-4
-          rounded
-          flex
-          justify-center
-          items-center
-        "
-      >
-        See result
-      </button>
+  <div class="flex justify-center item-center">
+    <div>
+      <Question
+        :question="cards[current].question"
+        :options="cards[current].options"
+        @nextClicked="changeCard"
+        @beforeClicked="previousQuestion"
+      />
+      <nuxt-link to="/score">
+        <button
+          class="
+            bg-yellow-300
+            hover:opacity-70
+            text-gray-500
+            font-bold
+            py-2
+            px-4
+            rounded
+            mr-4
+          "
+          v-if="finished"
+          @click="handleResults"
+        >
+          See result
+        </button>
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
+import Question from '@/components/Question'
+export default {
+  components: {
+    Question,
+  },
+  data() {
+    return {
+      current: 0,
+      d: false,
+      cards: [
+        {
+          question: 'What is the power unit of the cell?',
+          options: ['Locoplast', 'Mithocondria'],
+        },
+        {
+          question: 'When was the covid pandemic?',
+          options: ['2010', '2019'],
+        },
+        {
+          question: 'What do you need to survive?',
+          options: ['Cola', 'Water'],
+        },
+      ],
+      answers: [1, 1, 1],
+    }
+  },
+  methods: {
+    changeCard() {
+      if (!this.finished) {
+        this.current = this.current + 1
+      }
+    },
+    previousQuestion() {
+      if (this.current != 0) {
+        this.current = this.current - 1
+      }
+    },
+    handleResults() {
+      this.$emit('finishedClicked')
+      console.log('done clicked')
+    },
+    done() {
+      d = true
+    },
+  },
+  computed: {
+    finished() {
+      return this.current === this.cards.length - 1
+    },
+  },
+}
 </script>
 
 <style>

@@ -9,7 +9,6 @@
         space-x-14
         text-blue-700
         underline
-        p-3
       "
     >
       <div>
